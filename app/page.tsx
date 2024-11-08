@@ -12,7 +12,6 @@ export default function Home() {
       <Services />
       <WhyUs />
       <FarmExperts />
-      <p></p>
     </div>
   );
 }
