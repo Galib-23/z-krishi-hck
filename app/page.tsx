@@ -1,0 +1,11 @@
+import Banner from "@/components/home/banner";
+import NavBar from "@/components/navbar";
+
+export default function Home() {
+  return (
+    <div>
+      <NavBar />
+      <Banner />
+    </div>
+  );
+}
