@@ -76,9 +76,9 @@ const CropRecommendation = () => {
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex flex-col items-center">
       <h2 className="text-2xl md:text-4xl text-center font-bold text-teal-500">CROP RECOMMENDATION</h2>
-      <p className="text-center text-sm text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel molestiae eaque sit? Similique aliquam, animi ipsa explicabo commodi, accusantium laborum enim, minus maxime molestias consequatur sunt.</p>
+      <p className="text-center text-sm text-gray-600 mt-2 max-w-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel molestiae eaque sit? Similique aliquam, animi ipsa explicabo commodi, accusantium laborum enim, minus maxime molestias consequatur sunt.</p>
       <div className="mt-8 flex flex-col items-center">
         <div className="max-w-2xl flex
         flex-col items-center">

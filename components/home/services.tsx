@@ -4,7 +4,7 @@ import ServiceCard from "./home-components/service-card"
 
 const Services = () => {
   return (
-    <div className="md:h-screen flex flex-col items-center justify-center">
+    <div className="md:h-screen flex flex-col items-center justify-center px-2">
       <h1 className="text-2xl md:text-5xl font-bold text-teal-500 mt-8 md:mt-0">Our Services</h1>
       <p className="text-gray-600 max-w-[700px] text-center mt-4 px-2">Z-Krishi offers a comprehensive suite of tools designed to support sustainable farming practices. Our AI-powered crop suggestion system provides tailored crop recommendations based on real-time data, helping farmers make informed planting decisions.</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 text md:grid-cols-4 gap-6 mt-10">

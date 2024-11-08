@@ -1,5 +1,6 @@
 import Banner from "@/components/home/banner";
 import Services from "@/components/home/services";
+import WhyUs from "@/components/home/why-us";
 import NavBar from "@/components/navbar";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <NavBar />
       <Banner />
       <Services />
+      <WhyUs />
     </div>
   );
 }
