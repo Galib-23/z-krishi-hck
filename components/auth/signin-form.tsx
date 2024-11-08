@@ -10,6 +10,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { signIn, useSession } from "next-auth/react"
@@ -34,7 +35,7 @@ const SignInForm = () => {
     router.refresh();
   }
   const { data: session } = useSession()
-  if(session?.user) {
+  if (session?.user) {
     redirect("/");
   }
   return (
@@ -50,6 +51,7 @@ const SignInForm = () => {
                 <FormControl>
                   <Input placeholder="Your Email here.." {...field} />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -62,6 +64,7 @@ const SignInForm = () => {
                 <FormControl>
                   <Input placeholder="Your Password here.." {...field} />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
