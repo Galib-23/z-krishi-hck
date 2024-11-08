@@ -8,9 +8,9 @@ const CommunityPostCard = ({ post }: any) => {
   const downvotes = post.votes.filter((vote: any) => vote.type === "DOWNVOTE").length || 0;
   return (
     <div className="w-full max-w-4xl rounded-md border bg-transparent flex items-center ">
-      <Image className="w-44 h-32 object-cover rounded-l-md" width={288} height={192} src={post.postImage} alt="productimage" />
+      <Image className="w-40 h-28 object-cover rounded-l-md" width={300} height={192} src={post.postImage} alt="productimage" />
 
-      <div className="w-full p-4">
+      <div className="w-full flex-1 p-4">
         <div className="">
           <h1 className="font-semibold text-black">{post.postTitle}</h1>
           <p className="text-sm line-clamp-2">{post.postDescription}</p>

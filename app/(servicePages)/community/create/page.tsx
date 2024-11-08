@@ -57,7 +57,7 @@ const CreatePost = () => {
         } else {
           router.refresh();
         }
-      }, 800);
+      }, 1500);
     } catch (error: any) {
       console.log(error)
     }

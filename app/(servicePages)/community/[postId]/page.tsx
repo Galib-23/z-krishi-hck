@@ -36,7 +36,7 @@ const CommunityPostDetails = async ({ params }: PostPageProps) => {
     <div className="min-h-screen">
       <CommunityNav />
       <div className="flex flex-col items-center mt-6">
-        <Image className="rounded-xl shadow-lg" src={post?.postImage as string} height={500} width={500} alt="postimg" />
+        <Image className="rounded-xl shadow-lg h-[300px] w-[300px]" src={post?.postImage as string} height={500} width={500} alt="postimg" />
         <div className="max-w-4xl mt-8">
           <h1 className="text-xl text-center md:text-3xl font-bold">{post?.postTitle}</h1>
           <p className="text-sm text-left text-gray-600 mt-5">{post?.postDescription}</p>
