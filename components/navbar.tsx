@@ -16,7 +16,7 @@ export default async function NavBar() {
         <Link href="/" className="flex items-center gap-2 ">
           <ZKrishi />
           <h2 className="text-2xl font-semibold text-teal-450">Z-Krishi</h2>
-        </Link>
+        </Link>   
         {
           user ? (
             <div className="cursor-pointer">
