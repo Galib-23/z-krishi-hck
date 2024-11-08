@@ -11,7 +11,7 @@ const CropRecommendation = () => {
   const [loading, setLoading] = useState(false);
   const [recommendedCrop, setRecommendedCrop] = useState<any>(null);
 
-  const API_key = "c24ebb344096854386380018f34db72c";
+  const API_key = 'c24ebb344096854386380018f34db72c';
 
   const fetchWeatherData = async () => {
     try {
@@ -86,11 +86,18 @@ const CropRecommendation = () => {
           {loading ? (
             <p>Loading...</p>
           ) : recommendedCrop ? (
-            <div className="mt-5 space-y-2">
-              <h2><span className="font-semibold">Recommended Crop:</span> <span className="text-gray-600">{recommendedCrop.cropName}</span></h2>
-              <p className="text-gray-700 ">{recommendedCrop.cropDescription}</p>
-              <p className=""><span className="font-semibold">Planting Procedure:</span> <span className="text-gray-600">{recommendedCrop.plantingProcedure}</span></p>
-              <p className=""><span className="font-semibold">Precautions:</span><span className="text-gray-600">{recommendedCrop.precautions}</span></p>
+            <div className="flex flex-col items-center mt-3">
+              <div className="p-3 space-y-2 border-2 border-green-500">
+                <p className="text-sm text-green-600">Temp: {weather?.main?.temp}K</p>
+                <p className="text-sm text-green-600">Hum: {weather?.main?.humidity}%</p>
+                <p className="text-sm text-green-600">Pressure: {weather?.main.pressure} mm Hg</p>
+              </div>
+              <div className="mt-5 space-y-2">
+                <h2><span className="font-semibold">Recommended Crop:</span> <span className="text-gray-600">{recommendedCrop.cropName}</span></h2>
+                <p className="text-gray-700 ">{recommendedCrop.cropDescription}</p>
+                <p className=""><span className="font-semibold">Planting Procedure:</span> <span className="text-gray-600">{recommendedCrop.plantingProcedure}</span></p>
+                <p className=""><span className="font-semibold">Precautions:</span><span className="text-gray-600">{recommendedCrop.precautions}</span></p>
+              </div>
             </div>
           ) : null}
         </div>
