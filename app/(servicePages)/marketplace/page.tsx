@@ -27,7 +27,7 @@ const MarketPlace = () => {
   return (
     <div className="flex justify-center md:mt-10 w-full">
       <Tabs value={activeTab} onValueChange={handleTabChange} className="flex flex-col items-center w-screen">
-        <TabsList className="flex flex-col justify-between md:flex-row md:space-x-2 bg-gray-200 p-2 rounded-lg h-fit w-full md:w-[800px] fixed">
+        <TabsList className=" z-50 flex flex-col justify-between md:flex-row md:space-x-2 bg-gray-200 p-2 rounded-lg h-fit w-full md:w-[800px] fixed">
           <div className="flex flex-wrap md:flex-row md:space-x-2 md:mr-0 mr-2 bg-gray-200">
             <Link href={'/'}>
               <div className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 rounded-md">

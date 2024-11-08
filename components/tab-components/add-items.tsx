@@ -68,11 +68,12 @@ const AddItems = () => {
       console.log(data);
       setTimeout(() => {
         if (error) {
-          router.replace(`/marketplace?tab=${values.product_type}`)
-        }else {
           router.refresh();
+        } else {
+          router.replace(`/marketplace?tab=${values.product_type}`);
+          window.location.reload();
         }
-      }, 800);
+      }, 20);
     } catch (error: any) {
       console.log(error.message)
     }
