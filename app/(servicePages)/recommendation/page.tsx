@@ -76,18 +76,25 @@ const CropRecommendation = () => {
   };
 
   return (
-    <div>
-      <button onClick={getCropRecommendation}>Get Recommendation</button>
-      {loading ? (
-        <p>Loading...</p>
-      ) : recommendedCrop ? (
-        <div>
-          <h2>Recommended Crop: {recommendedCrop.cropName}</h2>
-          <p>{recommendedCrop.cropDescription}</p>
-          <p>Planting Procedure: {recommendedCrop.plantingProcedure}</p>
-          <p>Precautions: {recommendedCrop.precautions}</p>
+    <div className="mt-8">
+      <h2 className="text-2xl md:text-4xl text-center font-bold text-teal-500">CROP RECOMMENDATION</h2>
+      <p className="text-center text-sm text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel molestiae eaque sit? Similique aliquam, animi ipsa explicabo commodi, accusantium laborum enim, minus maxime molestias consequatur sunt.</p>
+      <div className="mt-8 flex flex-col items-center">
+        <div className="max-w-2xl flex
+        flex-col items-center">
+          <button className="text-sm bg-teal-450 px-3 py-2 rounded-md hover:bg-teal-500" onClick={getCropRecommendation}>Get Recommendation</button>
+          {loading ? (
+            <p>Loading...</p>
+          ) : recommendedCrop ? (
+            <div className="mt-5 space-y-2">
+              <h2><span className="font-semibold">Recommended Crop:</span> <span className="text-gray-600">{recommendedCrop.cropName}</span></h2>
+              <p className="text-gray-700 ">{recommendedCrop.cropDescription}</p>
+              <p className=""><span className="font-semibold">Planting Procedure:</span> <span className="text-gray-600">{recommendedCrop.plantingProcedure}</span></p>
+              <p className=""><span className="font-semibold">Precautions:</span><span className="text-gray-600">{recommendedCrop.precautions}</span></p>
+            </div>
+          ) : null}
         </div>
-      ) : null}
+      </div>
     </div>
   );
 };
