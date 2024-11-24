@@ -1,6 +1,9 @@
 "use client";
 
+import { RecommendLottie } from "@/components/home/home-components/banner-lottie";
 import { AiChatSession } from "@/lib/gemini-config";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
@@ -76,30 +79,40 @@ const CropRecommendation = () => {
   };
 
   return (
-    <div className="mt-8 flex flex-col items-center">
-      <h2 className="text-2xl md:text-4xl text-center font-bold text-teal-500">CROP RECOMMENDATION</h2>
-      <p className="text-center text-sm text-gray-600 mt-2 max-w-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel molestiae eaque sit? Similique aliquam, animi ipsa explicabo commodi, accusantium laborum enim, minus maxime molestias consequatur sunt.</p>
+    <div className="flex min-h-screen items-center justify-center gap-20 relative">
+      <Link className="absolute top-6 left-6" href={'/'}>
+        <div className="px-2 py-1 text-sm font-medium text-gray-700 hover:bg-gray-300 bg-gray-200 rounded-md">
+          <ArrowLeft color="red" size={30} />
+        </div>
+      </Link>
+      <div className={``}>
+        <RecommendLottie />
+      </div>
       <div className="mt-8 flex flex-col items-center">
-        <div className="max-w-2xl flex
+        <h2 className="text-2xl md:text-4xl text-center font-bold text-teal-500">CROP RECOMMENDATION</h2>
+        <p className="text-center text-sm text-gray-600 mt-2 max-w-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel molestiae eaque sit? Similique aliquam, animi ipsa explicabo commodi, accusantium laborum enim, minus maxime molestias consequatur sunt.</p>
+        <div className="mt-8 flex flex-col items-center">
+          <div className="max-w-2xl flex
         flex-col items-center">
-          <button className="text-sm bg-teal-450 px-3 py-2 rounded-md hover:bg-teal-500" onClick={getCropRecommendation}>Get Recommendation</button>
-          {loading ? (
-            <p>Loading...</p>
-          ) : recommendedCrop ? (
-            <div className="flex flex-col items-center mt-3">
-              <div className="p-3 space-y-2 border-2 border-green-500">
-                <p className="text-sm text-green-600">Temp: {weather?.main?.temp}K</p>
-                <p className="text-sm text-green-600">Hum: {weather?.main?.humidity}%</p>
-                <p className="text-sm text-green-600">Pressure: {weather?.main.pressure} mm Hg</p>
+            <button className="text-sm bg-teal-450 px-3 py-2 rounded-md hover:bg-teal-500" onClick={getCropRecommendation}>Get Recommendation</button>
+            {loading ? (
+              <p>Loading...</p>
+            ) : recommendedCrop ? (
+              <div className="flex flex-col items-center mt-3">
+                <div className="p-3 space-y-2 border-2 border-green-500">
+                  <p className="text-sm text-green-600">Temp: {weather?.main?.temp}K</p>
+                  <p className="text-sm text-green-600">Hum: {weather?.main?.humidity}%</p>
+                  <p className="text-sm text-green-600">Pressure: {weather?.main.pressure} mm Hg</p>
+                </div>
+                <div className="mt-5 space-y-2">
+                  <h2><span className="font-semibold">Recommended Crop:</span> <span className="text-gray-600">{recommendedCrop.cropName}</span></h2>
+                  <p className="text-gray-700 ">{recommendedCrop.cropDescription}</p>
+                  <p className=""><span className="font-semibold">Planting Procedure:</span> <span className="text-gray-600">{recommendedCrop.plantingProcedure}</span></p>
+                  <p className=""><span className="font-semibold">Precautions:</span><span className="text-gray-600">{recommendedCrop.precautions}</span></p>
+                </div>
               </div>
-              <div className="mt-5 space-y-2">
-                <h2><span className="font-semibold">Recommended Crop:</span> <span className="text-gray-600">{recommendedCrop.cropName}</span></h2>
-                <p className="text-gray-700 ">{recommendedCrop.cropDescription}</p>
-                <p className=""><span className="font-semibold">Planting Procedure:</span> <span className="text-gray-600">{recommendedCrop.plantingProcedure}</span></p>
-                <p className=""><span className="font-semibold">Precautions:</span><span className="text-gray-600">{recommendedCrop.precautions}</span></p>
-              </div>
-            </div>
-          ) : null}
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

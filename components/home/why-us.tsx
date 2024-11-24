@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import BannerLottie from './home-components/banner-lottie'
+
 import whyus from "@/public/images/whyus.png";
+import { BannerLottie } from './home-components/banner-lottie';
 
 const WhyUs = () => {
   return (

@@ -49,10 +49,10 @@ const WeatherForecast = () => {
 
   return (
     <div className="text-5xl font-bold text-center border-2 max-w-7xl mx-auto min-h-screen m-10 rounded-3xl bg-emerald-200 px-10 bg-opacity-50">
-      <p className="p-10 ">Weather Forecast</p>
+      <p className="p-10 ">Get Weather Data</p>
       <hr className="border-black" />
       <p className="font-extralight text-sm">A weather forecast provides an outlook on atmospheric conditions over a specific period, using data from satellites, weather stations, and advanced computer models. It predicts factors such as temperature, precipitation, humidity, wind speed, and atmospheric pressure, helping individuals and communities prepare for varying weather events. Forecasts can range from short-term predictions, which are generally accurate within a few days, to long-term seasonal outlooks, although accuracy decreases over time. Reliable weather forecasts are crucial for planning daily activities, managing agricultural operations, and ensuring public safety in cases of severe weather.</p>
-      <button className="text-sm bg-teal-450 px-3 py-2 rounded-md hover:bg-teal-500 mt-4 mb-4" onClick={getWeatherData}>Get Recommendation</button>
+      <button className="text-sm bg-teal-450 px-3 py-2 rounded-md hover:bg-teal-500 mt-4 mb-4" onClick={getWeatherData}>Get Weather Data</button>
       {
         loading && <p className="text-center text-2xl font-bold mt-8">Loading...</p>
       }

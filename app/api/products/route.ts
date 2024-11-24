@@ -54,7 +54,7 @@ export const POST = async (request: NextRequest) => {
 };
 
 export const GET = async (request: NextRequest) => {
-  const productType = request.nextUrl.searchParams.get('productType');
+  const productType = request.nextUrl.searchParams.get("productType");
   const user = await auth();
 
   let products;
@@ -67,12 +67,7 @@ export const GET = async (request: NextRequest) => {
     });
   } else {
     products = await prisma.product.findMany({
-      where: {
-        AND: [
-          { userId: user.user.id },
-          { productType: productType as ProductType},
-        ],
-      },
+      where: { productType: productType as ProductType },
     });
   }
 

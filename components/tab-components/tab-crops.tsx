@@ -4,10 +4,11 @@ import ProductCard from "./product-card";
 
 const TabProducts = ({productType}: any) => {
   
-  const [products, setProducts] = useState<any>(null);
+  const [products, setProducts] = useState<any>([]);
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log('Product type:', productType);
     const getProducts = async () => {
       try {
         const res = await fetch(`/api/products?productType=${productType}`, {
@@ -15,10 +16,11 @@ const TabProducts = ({productType}: any) => {
         });
         if (!res.ok) {
           setError(true);
+          return;
         }
         const data = await res.json();
+        console.log('product', data);
         setProducts(data);
-        console.log(data);
       } catch (error: any) {
         console.log(error.message);
       }

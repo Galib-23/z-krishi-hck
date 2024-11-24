@@ -11,7 +11,7 @@ const model = genAI.getGenerativeModel({
 const generationConfig = {
   temperature: 0.7, // Lower temperature for more deterministic responses
   topP: 0.9,        // Slightly lower for more focused generation
-  topK: 50,
+  topK: 40,
   maxOutputTokens: 512, // Reduce to test stability in response
   responseMimeType: "application/json",
 };
