@@ -2,7 +2,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -12,6 +11,9 @@ import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react"
 import Swal from "sweetalert2";
+import bkash from "@/assets/bkash.png";
+import nagad from "@/assets/nagad.svg";
+import rocket from "@/assets/rocket.png";
 
 const TabCart = () => {
   const [cartProducts, setCartProducts] = useState<any>(null);
@@ -72,6 +74,37 @@ const TabCart = () => {
     });
   }
 
+  const handleCheckout = async () => {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Checkout"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await fetch(`/api/cart`, {
+            method: 'DELETE',
+          });
+
+          if (!res.ok) throw new Error('Failed to checkout item');
+          else {
+            Swal.fire({
+              title: "Checkout Successfull!",
+              icon: "success"
+            });
+            setCartProducts([]);
+          }
+        } catch (error) {
+          console.error('Error checkout item:', error);
+          Swal.fire("Error in checkout!")
+        }
+      }
+    });
+  }
+
   if (loading || !cartProducts) {
     return (
       <p>Loading..</p>
@@ -81,7 +114,7 @@ const TabCart = () => {
   return (
     <div>
       <Table className="w-full max-w-4xl border border-gray-300 rounded-lg overflow-hidden">
-        <TableCaption className="underline text-sm text-gray-700 p-4 font-semibold">A list of your recent purchases.</TableCaption>
+        {/* <TableCaption className="underline text-sm text-gray-700 p-4 font-semibold">A list of your recent purchases.</TableCaption> */}
         <TableHeader className="bg-gray-200">
           <TableRow>
             <TableHead className="w-[100px] py-3 px-4 text-left text-gray-600 font-medium">#</TableHead>
@@ -111,6 +144,43 @@ const TabCart = () => {
           }
         </TableBody>
       </Table>
+      <div className="flex flex-row items-center gap-10 mt-10">
+        <div>
+          <button onClick={handleCheckout} type="button"
+            className="px-5 py-2.5 rounded-lg text-white text-sm tracking-wider font-medium border border-current outline-none bg-gradient-to-tr hover:bg-gradient-to-tl from-teal-700 to-teal-300">Checkout</button>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="flex items-center">
+            <input
+              disabled
+              type="radio"
+              className="w-5 h-5 cursor-pointer"
+              id="card"
+              checked
+            />
+            <label
+              htmlFor="card"
+              className="ml-4 flex gap-2 cursor-pointer"
+            >
+              <Image
+                src={bkash}
+                className="w-12 object-contain"
+                alt="card1"
+              />
+              <Image
+                src={rocket}
+                className="w-12 object-contain"
+                alt="card2"
+              />
+              <Image
+                src={nagad}
+                className="w-12 object-contain"
+                alt="card3"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
       {
         error && <p className="text-sm mt-1 text-red-500">{error}</p>
       }

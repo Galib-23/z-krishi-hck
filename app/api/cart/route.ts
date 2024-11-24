@@ -42,20 +42,20 @@ export const POST = async (req: NextRequest) => {
       if (cartItem) {
         await prisma.cartItem.update({
           where: {
-            id: cartItem.id
+            id: cartItem.id,
           },
           data: {
-            quantity: cartItem.quantity + parseInt(quantity)
-          }
-        })
+            quantity: cartItem.quantity + parseInt(quantity),
+          },
+        });
       } else {
         await prisma.cartItem.create({
           data: {
             cartId: cart.id,
             productId,
-            quantity: +quantity
-          }
-        })
+            quantity: +quantity,
+          },
+        });
       }
     }
 
@@ -69,13 +69,13 @@ export const POST = async (req: NextRequest) => {
 
     await prisma.product.update({
       where: {
-        id: productId
+        id: productId,
       },
       data: {
-        productRemaining: product?.productRemaining - parseInt(quantity)
-      }
-    })
-    
+        productRemaining: product?.productRemaining - parseInt(quantity),
+      },
+    });
+
     return NextResponse.json(cart);
   } catch (error) {
     return errorHandler(error);
@@ -109,12 +109,60 @@ export const GET = async () => {
     });
 
     if (!cart) {
-      return NextResponse.json({ message: 'Cart not found' }, { status: 404 });
+      return NextResponse.json({ message: "Cart not found" }, { status: 404 });
     }
 
     return NextResponse.json(cart, { status: 200 });
   } catch (error) {
-    console.error('Error fetching cart:', error);
+    console.error("Error fetching cart:", error);
     return errorHandler(error);
   }
-}
+};
+
+export const DELETE = async () => {
+  const session = await auth();
+  if (!session || !session.user) {
+    throw new CustomError("Unauthorized", 401, "UNAUTHORIZED");
+  }
+  const userId = session.user.id;
+  try {
+    const cart = await prisma.cart.findFirst({
+      where: {
+        userId: userId,
+      },
+    });
+    const cartItems = await prisma.cartItem.findMany({
+      where: {
+        cartId: cart?.id,
+      },
+      include: {
+        product: true,
+      },
+    });
+
+    for (const cartItem of cartItems) {
+      if (cartItem.product) {
+        await prisma.product.update({
+          where: {
+            id: cartItem.productId,
+          },
+          data: {
+            totalSold: {
+              increment: cartItem.quantity,
+            },
+          },
+        });
+      }
+    }
+    await prisma.cart.deleteMany({
+      where: {
+        userId: userId,
+      },
+    });
+
+    return NextResponse.json({ message: "Checkout Successfull" });
+  } catch (error) {
+    console.error("Error fetching cart:", error);
+    return errorHandler(error);
+  }
+};

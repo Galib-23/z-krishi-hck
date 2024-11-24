@@ -31,7 +31,7 @@ const TabProducts = ({productType}: any) => {
   }, [productType])
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-3 max-w-6xl">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl">
       {
         products?.map((product: Record<string, any>) => (
           <ProductCard

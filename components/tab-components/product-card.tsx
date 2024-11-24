@@ -26,7 +26,7 @@ const ProductCard = ({
         </div>
         <h4 className="text-sm text-gray-500"><span className="font-semibold text-gray-700">Price: </span>BDT {productPrice}.0</h4>
         <Link href={`/marketplace/${productId}`}>
-          <button className="text-sm bg-teal-500 w-full py-2 mt-3 rounded-md hover:bg-teal-400">View Details</button>
+          <button className="text-sm border border-teal-500 w-full py-2 mt-3 rounded-md hover:bg-teal-400">View Details</button>
         </Link>
       </div>
     </div>
