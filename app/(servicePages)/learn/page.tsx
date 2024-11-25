@@ -1,6 +1,7 @@
 "use client";
 import Blogs from "@/components/learn-tab-components/blogs";
 import CreateBlog from "@/components/learn-tab-components/create-blog";
+import Simulation from "@/components/learn-tab-components/simulation";
 import Tutorials from "@/components/learn-tab-components/tutorials";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, PlusCircle } from "lucide-react";
@@ -62,7 +63,7 @@ const LearnFarming = () => {
           <Tutorials />
         </TabsContent>
         <TabsContent value="simulation" className="mt-44 md:mt-24">
-          
+          <Simulation />
         </TabsContent>
         <TabsContent value="create-blog" className="mt-44 md:mt-20 w-full max-w-xl">
           <div className="mx-2 md:mx-0">
