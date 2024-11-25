@@ -21,7 +21,7 @@ const AboutUs = () => {
                   <path d="M0 512h512V0H0Z" data-original="#000000" />
                 </clipPath>
               </defs>
-              <g fill="none" stroke="currentColor" strokeLinecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="40" clip-path="url(#a)" transform="matrix(1.33 0 0 -1.33 0 682.667)">
+              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" stroke-miterlimit="10" stroke-width="40" clip-path="url(#a)" transform="matrix(1.33 0 0 -1.33 0 682.667)">
                 <path d="M256 492 60 410.623v-98.925C60 183.674 137.469 68.38 256 20c118.53 48.38 196 163.674 196 291.698v98.925z" data-original="#000000" />
                 <path d="M178 271.894 233.894 216 334 316.105" data-original="#000000" />
               </g>

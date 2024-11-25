@@ -5,7 +5,6 @@ import prisma from "./lib/prisma";
 import { Adapter } from "next-auth/adapters";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { Role } from "@prisma/client";
 
 export class CustomAuthError extends AuthError {
   constructor(msg: string) {
@@ -81,7 +80,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           id: token.id as string,
           email: session.user.email,
           emailVerified: null,
-          role: Role.USER,
+          role: session.user.role,
         }
       }
       return session;

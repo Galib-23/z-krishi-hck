@@ -1,6 +1,5 @@
 import avatarPlaceholder from "@/assets/avatar_placeholder.png";
 import { Lock, LogOut, Settings } from "lucide-react";
-import { User } from "next-auth";
 import { signOut } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,11 +15,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { currentProfile } from "@/lib/current-profile";
 
-interface UserButtonProps {
-  user: User;
-}
 
-export default async function UserButton({ user }: UserButtonProps) {
+export default async function UserButton() {
   const profile = await currentProfile();
   return (
     <DropdownMenu>
@@ -46,17 +42,17 @@ export default async function UserButton({ user }: UserButtonProps) {
         <DropdownMenuLabel>{profile?.name}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <Link href="/settings">
+          <DropdownMenuItem className="cursor-pointer hover:bg-gray-200 p-3" asChild>
+            <Link className="cursor-pointer hover:bg-gray-200" href="/settings">
               <Settings className="mr-2 h-4 w-4" />
               <span>Settings</span>
             </Link>
           </DropdownMenuItem>
-          {user?.role && (
-            <DropdownMenuItem asChild>
-              <Link href="/admin">
+          {profile?.role === 'ADMIN' && (
+            <DropdownMenuItem className="cursor-pointer hover:bg-gray-200 p-3" asChild>
+              <Link className="cursor-pointer hover:bg-gray-200" href="/admin">
                 <Lock className="mr-2 h-4 w-4" />
-                {user.role}<span className="text-xs">(role)</span>
+                DashBoard<span className="text-xs">({profile?.role})</span>
               </Link>
             </DropdownMenuItem>
           )}
@@ -69,7 +65,7 @@ export default async function UserButton({ user }: UserButtonProps) {
           }}>
             <button
               type="submit"
-              className="flex w-full items-center text-red-500"
+              className="flex w-full items-center text-red-500 hover:bg-gray-200 p-2 rounded-md"
             >
               <LogOut className="mr-2 h-4 w-4" /> Sign Out
             </button>

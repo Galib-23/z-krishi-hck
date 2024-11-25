@@ -34,7 +34,7 @@ export default async function NavBar() {
         {
           user ? (
             <div className="cursor-pointer">
-              <UserButton user={user} />
+              <UserButton />
             </div>
           ) : <Link href={"/signin"}>
               <button className="bg-teal-400 shadow-md text-black px-3 py-2 rounded-lg hover:bg-teal-700 hover:text-white transition">
