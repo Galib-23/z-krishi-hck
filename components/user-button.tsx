@@ -50,7 +50,7 @@ export default async function UserButton() {
           </DropdownMenuItem>
           {profile?.role === 'ADMIN' && (
             <DropdownMenuItem className="cursor-pointer hover:bg-gray-200 p-3" asChild>
-              <Link className="cursor-pointer hover:bg-gray-200" href="/admin">
+              <Link className="cursor-pointer hover:bg-gray-200" href="/admin/manage-users">
                 <Lock className="mr-2 h-4 w-4" />
                 DashBoard<span className="text-xs">({profile?.role})</span>
               </Link>
