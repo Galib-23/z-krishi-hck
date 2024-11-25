@@ -17,6 +17,20 @@ export default async function NavBar() {
           <ZKrishi />
           <h2 className="text-2xl font-semibold text-teal-450">Z-Krishi</h2>
         </Link>   
+        <div className="flex items-center gap-6">
+        <Link href="/about-us">
+          <h2 className=" text-white p-2 rounded-md hover:bg-teal-450 hover:text-black">About Us</h2>
+        </Link>  
+        <Link href="/pricing">
+          <h2 className=" text-white p-2 rounded-md hover:bg-teal-450 hover:text-black">Pricing</h2>
+        </Link>  
+        <Link href="/contact-us">
+          <h2 className=" text-white p-2 rounded-md hover:bg-teal-450 hover:text-black">Contact Us</h2>
+        </Link>  
+        <Link href="/testimonials">
+          <h2 className=" text-white p-2 rounded-md hover:bg-teal-450 hover:text-black">Testimonials</h2>
+        </Link>  
+        </div>
         {
           user ? (
             <div className="cursor-pointer">
