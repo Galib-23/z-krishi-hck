@@ -144,7 +144,9 @@ const TabCart = () => {
           }
         </TableBody>
       </Table>
-      <div className="flex flex-row items-center gap-10 mt-10">
+      {
+        cartProducts?.items?.length > 0 ? (
+          <div className="flex flex-row items-center gap-10 mt-10">
         <div>
           <button onClick={handleCheckout} type="button"
             className="px-5 py-2.5 rounded-lg text-white text-sm tracking-wider font-medium border border-current outline-none bg-gradient-to-tr hover:bg-gradient-to-tl from-teal-700 to-teal-300">Checkout</button>
@@ -181,6 +183,10 @@ const TabCart = () => {
           </div>
         </div>
       </div>
+        ) : (
+          <p className="text-sm underline font-semibold text-center mt-8">No products in the cart</p>
+        )
+      }
       {
         error && <p className="text-sm mt-1 text-red-500">{error}</p>
       }

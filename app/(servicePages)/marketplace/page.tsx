@@ -3,25 +3,28 @@ import AddItems from "@/components/tab-components/add-items"
 import TabCart from "@/components/tab-components/tab-cart"
 import TabProducts from "@/components/tab-components/tab-crops"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowLeft, MenuIcon, PlusCircle, ShoppingCart } from "lucide-react"
+import { ArrowLeft, PlusCircle, ShoppingCart } from "lucide-react"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
 const MarketPlace = () => {
   const searchParams = useSearchParams();
-  const tabParam = searchParams.get('tab');
+  const router = useRouter();
+  const tabParam = searchParams.get("tab");
   const [activeTab, setActiveTab] = useState("CROP");
 
   useEffect(() => {
     if (tabParam) {
       setActiveTab(tabParam);
     }
-    handleTabChange(tabParam);
   }, [tabParam]);
 
-  const handleTabChange = (value: any) => {
+  const handleTabChange = (value: string) => {
     setActiveTab(value);
+    const queryParams = new URLSearchParams(window.location.search);
+    queryParams.set("tab", value);
+    router.replace(`?${queryParams.toString()}`);
   };
 
   return (
@@ -56,10 +59,10 @@ const MarketPlace = () => {
               <ShoppingCart size={20} />
               <p className="hidden group-hover:block absolute -top-5 -left-12 p-1 bg-slate-500 text-white rounded-md">My Cart</p>
             </TabsTrigger>
-            <TabsTrigger value="menu" className="px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 group relative">
+            {/* <TabsTrigger value="menu" className="px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 group relative">
               <MenuIcon size={20} />
               <p className="hidden group-hover:block absolute -top-5 -left-8 p-1 bg-slate-500 text-white rounded-md">Menu</p>
-            </TabsTrigger>
+            </TabsTrigger> */}
           </div>
         </TabsList>
         <TabsContent value="CROP" className="mt-44 md:mt-24">
@@ -82,9 +85,9 @@ const MarketPlace = () => {
         <TabsContent value="cart" className="mt-44 md:mt-24">
           <TabCart />
         </TabsContent>
-        <TabsContent value="menu" className="mt-44 md:mt-24">
+        {/* <TabsContent value="menu" className="mt-44 md:mt-24">
 
-        </TabsContent>
+        </TabsContent> */}
       </Tabs>
     </div>
   )

@@ -17,7 +17,7 @@ const Services = () => {
         <ServiceCard 
           text="Learn Farming"
           Icon={Spade}
-          link="/learn"
+          link="/learn?tab=blogs"
           color="text-cyan-400"
         />
         <ServiceCard 
