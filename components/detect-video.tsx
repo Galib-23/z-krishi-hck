@@ -37,7 +37,7 @@ const DetectVideo: React.FC = () => {
     const loadModel = async () => {
       try {
         const ml5Module = await import("ml5");
-        const loadedClassifier = await ml5Module.imageClassifier("https://teachablemachine.withgoogle.com/models/p_cqpug2b/model.json");
+        const loadedClassifier = ml5Module.imageClassifier("https://teachablemachine.withgoogle.com/models/p_cqpug2b/model.json");
         setClassifier(loadedClassifier);
       } catch (error) {
         console.error("Error loading model:", error);
@@ -93,9 +93,10 @@ const DetectVideo: React.FC = () => {
 
 
   return (
-    <div className="flex flex-col sm:flex-row sm:justify-evenly gap-4 sm:gap-8 p-4 bg-gray-100 min-h-screen mt">
+    <div className="flex flex-col items-center sm:flex-row sm:justify-evenly gap-4 sm:gap-8 p-4 bg-gray-100 min-h-screen mt">
       <div className="flex flex-col items-center">
-        <h1 className="text-4xl font-bold mb-4 text-green-700">Disease Detection</h1>
+        <h1 className="text-4xl font-bold text-green-700">Disease Detection</h1>
+        <p className=" text-gray-500 mt-2 mb-8">Detect any crops disease and get recommended Cure and Suggestions in <span className="text-base text-orange-400 italic">Real Time</span>.</p>
         <video
           ref={videoRef}
           width={600}
@@ -121,7 +122,7 @@ const DetectVideo: React.FC = () => {
         )}
       </div>
       {
-        disease && (
+        disease ? (
           <div className="max-w-2xl mt-12">
             {disease && confidence > .9 ? (
               <div className=" p-4 bg-white rounded-md shadow-md w-full max-w-md">
@@ -153,6 +154,15 @@ const DetectVideo: React.FC = () => {
                 </div>
               )
             }
+          </div>
+        ) : (
+          <div>
+            <h2 className="text-3xl font-semibold">Here&apos;s how to do it 💁 </h2>
+            <ol className="mt-6 text-sm text-gray-700">
+              <li>1. Open Your Camera</li>
+              <li>2. Put a diseased leaf in front of the camera</li>
+              <li>3. You are ready to go. </li>
+            </ol>
           </div>
         )
       }

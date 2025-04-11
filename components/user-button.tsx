@@ -26,6 +26,7 @@ export default async function UserButton() {
           profile?.image ? (
             <Button size="icon" className="flex-none rounded-full border-green-700 border-2 shadow-md hover:border-green-500">
               <Image
+                unoptimized
                 src={profile?.image || avatarPlaceholder}
                 alt="User profile picture"
                 width={50}
