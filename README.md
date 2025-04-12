@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Z-Krishi: AI-Powered Agricultural Solution
+
+Z-Krishi is an innovative platform designed to assist farmers in optimizing crop production, managing pests and diseases, and improving overall agricultural efficiency. With features powered by AI and machine learning, Z-Krishi aims to help farmers grow healthy crops and increase productivity.
+
+## Features
+
+### 1. **Crop Recommendation by AI**
+   - Z-Krishi uses custom machine learning models to analyze soil data, weather patterns, and historical crop yield data.
+   - Based on these factors, the website recommends the best crops for a farmer to plant, ensuring optimal growth and yield.
+
+### 2. **Pests and Disease Detection**
+   - Users can upload images of infected crop leaves or other plant parts.
+   - The AI model identifies diseases and pests, providing suggestions for treatment and remedies to protect crops.
+
+### 3. **Resources**
+   - The platform provides a collection of documents and articles on sustainable agriculture practices.
+   - Tutorials and guides are available for growing specific plants and crops efficiently.
+
+### 4. **Weather Forecast and Alarm System**
+   - Z-Krishi offers real-time weather forecasts, including predictions for potential storms or natural disasters.
+   - In case of adverse weather, the system suggests preventive measures to mitigate crop damage and losses.
+
+### 5. **Organic Products Marketplace**
+   - Z-Krishi promotes food security by offering a marketplace where farmers can sell their crops directly.
+   - Farmers can list organic produce for sale, supporting sustainable agricultural practices and increasing access to fresh produce.
+
+### 6. **Community Forum**
+   - A space for farmers to ask questions, share experiences, and connect with fellow farmers and experts.
+   - The forum helps foster collaboration and knowledge sharing within the farming community.
+
+## Tech Stack
+
+- **Frontend**: React, Next.js, Tailwind CSS
+- **Backend**: Node.js, Prisma ORM
+- **Database**: PostgreSQL (local database)
+- **AI/ML**: TensorFlow.js, ml5.js, Custom ML Models
+- **Authentication**: NextAuth.js (Auth.js v5)
+- **Deployment**: Microsoft Azure configured with nginx web server and pm2.
+- **Domain**: Domain from duckdns.org
+
+
+
+
+## Database Schema:
+
+![Z-Krishi Logo](assets/schema.png)
+
+
 
 ## Getting Started
 
-First, run the development server:
+1. Clone this repository:
+  
+    ```bash
+    git clone https://github.com/Galib-23/z-krishi-hck.git
+    cd z-krishi-hck
+    ```
+2. Install dependencies:
+  
+    ```bash
+    npm install
+    ```
+3. Set database url to `.env ` file:
+  
+    ```bash
+    DATABASE_URL=postgresql://user:password@localhost:5432/zkrishi
+    ```
+3. Run the development server:
+  
+    ```bash
+    npm run dev
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
