@@ -1,6 +1,36 @@
+'use client'
 import Link from "next/link";
+import { useEffect } from "react";
 
 function Banner() {
+
+  const trackVisitor = async () => {
+    const ipResponse = await fetch("https://api.ipify.org?format=json");
+    const { ip } = await ipResponse.json();
+
+    const userAgent = navigator.userAgent;
+    const locationResponse = await fetch(`https://ipapi.co/${ip}/json/`);
+    const locationData = await locationResponse.json();
+    const location = locationData.city + ", " + locationData.country;
+
+    const visitData = JSON.parse(localStorage.getItem("visitData") || "null");
+    const oneHour = 60 * 60 * 1000;
+
+    if (!visitData || Date.now() - visitData.timestamp > oneHour) {
+      await fetch("https://traffic-service.vercel.app/api/visitor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ip, location, userAgent }),
+      });
+      localStorage.setItem('visitData', JSON.stringify({ timestamp: Date.now() }));
+    }
+  };
+  useEffect(() => {
+    trackVisitor();
+  }, []);
+
   return (
     <div className='relative h-screen bg-cover bg-center bg-[url("/images/banner.jpg")]'>
       <div className="absolute inset-0 bg-black opacity-60"></div>

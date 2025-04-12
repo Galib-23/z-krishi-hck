@@ -1,5 +1,5 @@
 'use client'
-import { HomeIcon, PenBoxIcon, ShoppingBag, TreePalm, UserRoundSearch, Users } from "lucide-react";
+import { HomeIcon, ShoppingBag, TreePalm, UserRoundSearch, Users } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -40,6 +40,16 @@ const Sidebar = () => {
         <ul className="mt-6 space-y-2">
           <li>
             <Link
+              href="/admin/user-traffic"
+              className={`block rounded-lg font-sans text-sm px-4 py-3 font-medium hover:bg-teal-500 hover:text-white ${
+                path?.includes("/create") ? "bg-teal-600 text-white" : "text-gray-700"
+              } flex items-center gap-2`}
+            >
+              <Users size={20} />User Traffic
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/admin/manage-users"
               className={`block rounded-lg font-sans text-sm px-4 py-3 font-medium hover:bg-teal-500 hover:text-white ${
                 path?.includes("/create") ? "bg-teal-600 text-white" : "text-gray-700"
@@ -56,16 +66,6 @@ const Sidebar = () => {
               } flex items-center gap-2`}
             >
               <ShoppingBag size={20} />Manage Products
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/admin/manage-blogs"
-              className={`block rounded-lg font-sans text-sm px-4 py-3 font-medium hover:bg-teal-500 hover:text-white ${
-                path?.includes("/create") ? "bg-teal-600 text-white" : "text-gray-700"
-              } flex items-center gap-2`}
-            >
-              <PenBoxIcon size={20} />Manage Blogs
             </Link>
           </li>
           <li>
