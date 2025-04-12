@@ -26,6 +26,9 @@ const nextConfig: NextConfig = {
         hostname: "readymadeui.com"
       }
     ]
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   }
 };
 

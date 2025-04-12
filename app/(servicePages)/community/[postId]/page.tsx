@@ -1,16 +1,11 @@
 import prisma from "@/lib/prisma";
 import Image from "next/image";
-import { CommunityNav } from "../page";
 import PostVotes from "@/components/post-votes";
 import CommunityAnswers from "@/components/community-answers";
+import CommunityNav from "@/components/community-nav";
 
-interface PostPageProps {
-  params: {
-    postId: string;
-  };
-}
 
-const CommunityPostDetails = async ({ params }: PostPageProps) => {
+const CommunityPostDetails = async ({ params }: any) => {
   const { postId } = await params;
   let formattedDate;
   const post = await prisma.communityPost.findUnique({

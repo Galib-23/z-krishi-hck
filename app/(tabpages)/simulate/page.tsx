@@ -1,10 +1,10 @@
 "use client";
 
-import Lottie from 'lottie-react'
 import { steps } from "@/constants/seeds";
 import { useState } from "react";
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import LottieWrapper from "@/components/lottie-wrapper";
 
 const Simulate = () => {
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
@@ -38,7 +38,7 @@ const Simulate = () => {
         {/* Left Section: Image */}
         <div className="col-span-4 flex justify-center items-center border border-teal-500 rounded-md p-4 bg-white">
           <div className="md:w-[650px]">
-            <Lottie className='h-[60vh]' animationData={currentStep.animation} loop={true} />
+          <LottieWrapper animationData={currentStep.animation} />
           </div>
         </div>
 

@@ -40,7 +40,7 @@ const CommunityAnswers = ({ post }: any) => {
       }
     }
     fetchAnswers();
-  }, []);
+  }, [post.id]);
 
   const router = useRouter();
 

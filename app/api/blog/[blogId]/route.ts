@@ -8,7 +8,7 @@ export const GET = async (
   { params }: { params: { blogId: string } },
 ) => {
   try {
-    const { blogId } = await params;
+    const { blogId } = params;
 
     const blog = await prisma.blog.findUnique({
       where: {

@@ -23,7 +23,7 @@ const PostVotes = ({post}: any) => {
       }
     };
     fetchVoteCounts();
-  }, []);
+  }, [post.id]);
   console.log(upvotes, downvotes)
 
   const handleVote = async (voteType: string) => {

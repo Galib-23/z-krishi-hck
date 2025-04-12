@@ -44,13 +44,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ upvotes, downvotes });
     }
 
-    const vote = await prisma.vote.create({
-      data: {
-        userId: userId!,
-        communityPostId: postId,
-        type: voteType === "UPVOTE" ? "UPVOTE" : "DOWNVOTE",
-      },
-    });
+    // const vote = await prisma.vote.create({
+    //   data: {
+    //     userId: userId!,
+    //     communityPostId: postId,
+    //     type: voteType === "UPVOTE" ? "UPVOTE" : "DOWNVOTE",
+    //   },
+    // });
 
     post = await prisma.communityPost.findUnique({
       where: { id: postId },
