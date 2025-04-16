@@ -65,7 +65,20 @@ Z-Krishi is an innovative platform designed to assist farmers in optimizing crop
     ```bash
     DATABASE_URL=postgresql://user:password@localhost:5432/zkrishi
     ```
-3. Run the development server:
+
+4. Set Up other environment variables:
+
+   ```bash
+   AUTH_SECRET=your-secret-key
+   AUTH_GOOGLE_ID=your-secret-key
+   AUTH_GOOGLE_SECRET=your-secret-key
+   UPLOADTHING_TOKEN=your-secret-key
+   NEXT_PUBLIC_GEMINI_API_KEY=your-secret-key
+   WEATHER_API_KEY=your-secret-key
+   PASS=your-secret-key
+   ```
+
+5. Run the development server:
   
     ```bash
     npm run dev
